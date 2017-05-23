@@ -1,5 +1,8 @@
 package com.alugaqui.alugaquiservicos.model;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 /**
  * 
  * @author Silvino Vieira
@@ -7,12 +10,46 @@ package com.alugaqui.alugaquiservicos.model;
  */
 public abstract class Usuario {
 
-  public String email;
+  private String email;
+  private String nome;
+  private String sobrenome;
+  private String celular;
 
-  public String nome;
+  @Override
+  public String toString() {
+    return ReflectionToStringBuilder.toString(this, ToStringStyle.JSON_STYLE);
+  }
 
-  public String sobrenome;
+  public String getEmail() {
+    return email;
+  }
 
-  public String celular;
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
+  public String getNome() {
+    return nome;
+  }
+
+  public void setNome(String nome) {
+    this.nome = nome;
+  }
+
+  public String getSobrenome() {
+    return sobrenome;
+  }
+
+  public void setSobrenome(String sobrenome) {
+    this.sobrenome = sobrenome;
+  }
+
+  public String getCelular() {
+    return celular;
+  }
+
+  public void setCelular(String celular) {
+    this.celular = celular;
+  }
 
 }
