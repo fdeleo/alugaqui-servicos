@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.alugaqui.alugaquiservicos.model.Cliente;
 import com.alugaqui.alugaquiservicos.model.Corretor;
 import com.alugaqui.alugaquiservicos.repositories.UsuarioRepository;
 
@@ -23,6 +24,13 @@ public class UsuarioController {
   public ResponseEntity<Corretor> criarCorretor(@RequestBody Corretor corretor) {
     usuarioRepo.save(corretor);
     return new ResponseEntity<>(corretor, HttpStatus.CREATED);
+  }
+
+  @CrossOrigin
+  @RequestMapping(value = "/cliente", method = RequestMethod.POST)
+  public ResponseEntity<Cliente> criarCliente(@RequestBody Cliente cliente) {
+    usuarioRepo.save(cliente);
+    return new ResponseEntity<>(cliente, HttpStatus.CREATED);
   }
 
 }
