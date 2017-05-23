@@ -1,10 +1,8 @@
 package com.alugaqui.alugaquiservicos.model;
 
-/**
- * 
- * @author Silvino Vieira
- *
- */
+import javax.persistence.Entity;
+
+@Entity
 public class Corretor extends Usuario {
 
   private String creci;

@@ -1,15 +1,19 @@
 package com.alugaqui.alugaquiservicos.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-/**
- * 
- * @author Silvino Vieira
- *
- */
+@Entity
 public abstract class Usuario {
 
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
   private String email;
   private String nome;
   private String sobrenome;
