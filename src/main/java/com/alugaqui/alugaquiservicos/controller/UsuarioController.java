@@ -10,23 +10,23 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.alugaqui.alugaquiservicos.domain.Cliente;
 import com.alugaqui.alugaquiservicos.domain.Corretor;
-import com.alugaqui.alugaquiservicos.repository.UsuarioRepository;
+import com.alugaqui.alugaquiservicos.service.UserService;
 
 @RestController
 public class UsuarioController {
 
   @Autowired
-  private UsuarioRepository usuarioRepo;
+  private UserService userService;
 
   @RequestMapping(value = "/corretor", method = RequestMethod.POST)
   public ResponseEntity<Corretor> criarCorretor(@RequestBody Corretor corretor) {
-    usuarioRepo.save(corretor);
+    userService.create(corretor);
     return new ResponseEntity<>(corretor, HttpStatus.CREATED);
   }
 
   @RequestMapping(value = "/cliente", method = RequestMethod.POST)
   public ResponseEntity<Cliente> criarCliente(@RequestBody Cliente cliente) {
-    usuarioRepo.save(cliente);
+    userService.create(cliente);
     return new ResponseEntity<>(cliente, HttpStatus.CREATED);
   }
 

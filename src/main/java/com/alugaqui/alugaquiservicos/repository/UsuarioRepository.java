@@ -6,4 +6,6 @@ import com.alugaqui.alugaquiservicos.domain.Usuario;
 
 public interface UsuarioRepository extends CrudRepository<Usuario, Long> {
 
+  public Usuario findByEmail(String email);
+
 }
