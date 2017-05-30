@@ -1,5 +1,6 @@
 package com.alugaqui.alugaquiservicos.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,9 +15,13 @@ public abstract class Usuario {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
+  @Column(unique = true, nullable = false)
   private String email;
+  @Column(nullable = false)
   private String senha;
+  @Column(nullable = false)
   private String nome;
+  @Column(nullable = false)
   private String sobrenome;
   private String celular;
 
