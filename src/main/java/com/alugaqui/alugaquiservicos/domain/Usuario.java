@@ -49,7 +49,7 @@ public abstract class Usuario implements UserDetails {
 
   @Override
   public String getPassword() {
-    return getPassword();
+    return getSenha();
   }
 
   @Override
