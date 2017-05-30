@@ -19,7 +19,7 @@ public class ImovelController {
   @Autowired
   private ImovelRepository imovelRepo;
 
-  @RequestMapping(value = "/buscar-imoveis", method = RequestMethod.GET)
+  @RequestMapping(value = "/imoveis", method = RequestMethod.GET)
   public ResponseEntity<List<Imovel>> criarCorretor(@RequestParam("busca") String busca) {
     List<Imovel> imoveis = imovelRepo.findByBairroOrCidadeOrEstado(busca, busca, busca);
     return new ResponseEntity<>(imoveis, HttpStatus.OK);

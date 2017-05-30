@@ -34,6 +34,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .hasRole("CORRETOR");
     http.authorizeRequests().antMatchers(HttpMethod.POST, "/corretores").permitAll();
 
+    http.authorizeRequests().antMatchers(HttpMethod.GET, "/imoveis").permitAll();
+
     http.authorizeRequests().anyRequest().authenticated();
   }
 
