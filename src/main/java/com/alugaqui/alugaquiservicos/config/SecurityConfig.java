@@ -2,6 +2,7 @@ package com.alugaqui.alugaquiservicos.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -25,8 +26,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     // Disable cross-site request forgery
     http.csrf().disable();
 
-    http.authorizeRequests().antMatchers("/cliente").permitAll().antMatchers("/corretor")
-        .permitAll().antMatchers("/buscar-imoveis").permitAll().anyRequest().authenticated();
+    http.httpBasic().and().authorizeRequests().antMatchers(HttpMethod.GET, "/clientes")
+        .hasRole("CLIENTE");
+    http.authorizeRequests().antMatchers(HttpMethod.POST, "/clientes").permitAll();
+
+    http.httpBasic().and().authorizeRequests().antMatchers(HttpMethod.GET, "/corretores")
+        .hasRole("CORRETOR");
+    http.authorizeRequests().antMatchers(HttpMethod.POST, "/corretores").permitAll();
+
+    http.authorizeRequests().anyRequest().authenticated();
   }
 
 }

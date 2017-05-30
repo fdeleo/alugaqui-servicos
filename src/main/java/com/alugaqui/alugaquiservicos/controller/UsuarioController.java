@@ -1,5 +1,7 @@
 package com.alugaqui.alugaquiservicos.controller;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,16 +20,26 @@ public class UsuarioController {
   @Autowired
   private UserService userService;
 
-  @RequestMapping(value = "/corretor", method = RequestMethod.POST)
+  @RequestMapping(value = "/corretores", method = RequestMethod.POST)
   public ResponseEntity<Corretor> criarCorretor(@RequestBody Corretor corretor) {
     userService.create(corretor);
     return new ResponseEntity<>(corretor, HttpStatus.CREATED);
   }
 
-  @RequestMapping(value = "/cliente", method = RequestMethod.POST)
+  @RequestMapping(value = "/clientes", method = RequestMethod.POST)
   public ResponseEntity<Cliente> criarCliente(@RequestBody Cliente cliente) {
     userService.create(cliente);
     return new ResponseEntity<>(cliente, HttpStatus.CREATED);
+  }
+
+  @RequestMapping(value = "/corretores", method = RequestMethod.GET)
+  public ResponseEntity<Collection<Corretor>> listCorretores() {
+    return new ResponseEntity<>(userService.listCorretores(), HttpStatus.OK);
+  }
+
+  @RequestMapping(value = "/clientes", method = RequestMethod.GET)
+  public ResponseEntity<Collection<Cliente>> listClientes() {
+    return new ResponseEntity<>(userService.listClientes(), HttpStatus.OK);
   }
 
 }
