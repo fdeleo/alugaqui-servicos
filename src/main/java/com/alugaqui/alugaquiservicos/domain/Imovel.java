@@ -1,4 +1,4 @@
-package com.alugaqui.alugaquiservicos.model;
+package com.alugaqui.alugaquiservicos.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.alugaqui.alugaquiservicos.model.Imovel;
-import com.alugaqui.alugaquiservicos.repositories.ImovelRepository;
+import com.alugaqui.alugaquiservicos.domain.Imovel;
+import com.alugaqui.alugaquiservicos.repository.ImovelRepository;
 
 @RestController
 public class ImovelController {

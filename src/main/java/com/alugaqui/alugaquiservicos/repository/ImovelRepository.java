@@ -1,10 +1,10 @@
-package com.alugaqui.alugaquiservicos.repositories;
+package com.alugaqui.alugaquiservicos.repository;
 
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.alugaqui.alugaquiservicos.model.Imovel;
+import com.alugaqui.alugaquiservicos.domain.Imovel;
 
 public interface ImovelRepository extends CrudRepository<Imovel, Long> {
 

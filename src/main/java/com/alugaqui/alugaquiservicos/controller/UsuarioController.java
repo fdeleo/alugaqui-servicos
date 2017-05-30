@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.alugaqui.alugaquiservicos.model.Cliente;
-import com.alugaqui.alugaquiservicos.model.Corretor;
-import com.alugaqui.alugaquiservicos.repositories.UsuarioRepository;
+import com.alugaqui.alugaquiservicos.domain.Cliente;
+import com.alugaqui.alugaquiservicos.domain.Corretor;
+import com.alugaqui.alugaquiservicos.repository.UsuarioRepository;
 
 @RestController
 public class UsuarioController {
