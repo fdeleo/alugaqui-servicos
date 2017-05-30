@@ -1,5 +1,8 @@
 package com.alugaqui.alugaquiservicos.domain;
 
+import java.util.Collection;
+import java.util.HashSet;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,9 +11,14 @@ import javax.persistence.Id;
 
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
-public abstract class Usuario {
+public abstract class Usuario implements UserDetails {
+
+  private static final long serialVersionUID = -1365769735643538536L;
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,9 +33,48 @@ public abstract class Usuario {
   private String sobrenome;
   private String celular;
 
+  protected abstract String getRole();
+
   @Override
   public String toString() {
     return ReflectionToStringBuilder.toString(this, ToStringStyle.JSON_STYLE);
+  }
+
+  @Override
+  public Collection<? extends GrantedAuthority> getAuthorities() {
+    Collection<GrantedAuthority> authorities = new HashSet<>();
+    authorities.add(new SimpleGrantedAuthority(getRole()));
+    return authorities;
+  }
+
+  @Override
+  public String getPassword() {
+    return getPassword();
+  }
+
+  @Override
+  public String getUsername() {
+    return getEmail();
+  }
+
+  @Override
+  public boolean isAccountNonExpired() {
+    return true;
+  }
+
+  @Override
+  public boolean isAccountNonLocked() {
+    return true;
+  }
+
+  @Override
+  public boolean isCredentialsNonExpired() {
+    return true;
+  }
+
+  @Override
+  public boolean isEnabled() {
+    return true;
   }
 
   public String getEmail() {
