@@ -38,13 +38,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     // Disable session use and creation
     http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
-    http.httpBasic().and().authorizeRequests().antMatchers(HttpMethod.GET, "/clientes")
+    http.httpBasic().and().authorizeRequests().antMatchers(HttpMethod.GET, "/test/clientes")
         .hasRole("CLIENTE");
-    http.authorizeRequests().antMatchers(HttpMethod.POST, "/clientes").permitAll();
+    http.authorizeRequests().antMatchers("/clientes").permitAll();
 
-    http.httpBasic().and().authorizeRequests().antMatchers(HttpMethod.GET, "/corretores")
+    http.httpBasic().and().authorizeRequests().antMatchers(HttpMethod.GET, "/test/corretores")
         .hasRole("CORRETOR");
-    http.authorizeRequests().antMatchers(HttpMethod.POST, "/corretores").permitAll();
+    http.authorizeRequests().antMatchers("/corretores").permitAll();
 
     http.authorizeRequests().antMatchers("/imoveis/busca/**").permitAll();
 

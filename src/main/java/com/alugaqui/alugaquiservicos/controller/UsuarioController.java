@@ -15,31 +15,32 @@ import com.alugaqui.alugaquiservicos.domain.Cliente;
 import com.alugaqui.alugaquiservicos.domain.Corretor;
 import com.alugaqui.alugaquiservicos.service.UserService;
 
-@CrossOrigin
 @RestController
 public class UsuarioController {
 
   @Autowired
   private UserService userService;
 
+  @CrossOrigin
   @RequestMapping(value = "/corretores", method = RequestMethod.POST)
   public ResponseEntity<Corretor> criarCorretor(@RequestBody Corretor corretor) {
     userService.create(corretor);
     return new ResponseEntity<>(corretor, HttpStatus.CREATED);
   }
 
+  @CrossOrigin
   @RequestMapping(value = "/clientes", method = RequestMethod.POST)
   public ResponseEntity<Cliente> criarCliente(@RequestBody Cliente cliente) {
     userService.create(cliente);
     return new ResponseEntity<>(cliente, HttpStatus.CREATED);
   }
 
-  @RequestMapping(value = "/corretores", method = RequestMethod.GET)
+  @RequestMapping(value = "/test/corretores", method = RequestMethod.GET)
   public ResponseEntity<Collection<Corretor>> listCorretores() {
     return new ResponseEntity<>(userService.listCorretores(), HttpStatus.OK);
   }
 
-  @RequestMapping(value = "/clientes", method = RequestMethod.GET)
+  @RequestMapping(value = "/test/clientes", method = RequestMethod.GET)
   public ResponseEntity<Collection<Cliente>> listClientes() {
     return new ResponseEntity<>(userService.listClientes(), HttpStatus.OK);
   }
