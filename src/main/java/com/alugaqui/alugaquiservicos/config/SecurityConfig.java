@@ -32,23 +32,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
-    // Disable cross-site request forgery
-    http.csrf().disable();
-
-    // Disable session use and creation
-    http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-
-    http.httpBasic().and().authorizeRequests().antMatchers(HttpMethod.GET, "/test/clientes")
-        .hasRole("CLIENTE");
-    http.authorizeRequests().antMatchers("/clientes").permitAll();
-
-    http.httpBasic().and().authorizeRequests().antMatchers(HttpMethod.GET, "/test/corretores")
-        .hasRole("CORRETOR");
-    http.authorizeRequests().antMatchers("/corretores").permitAll();
-
-    http.authorizeRequests().antMatchers("/imoveis/busca/**").permitAll();
-
-    http.authorizeRequests().anyRequest().authenticated();
+    // @formatter:off
+    http
+      .httpBasic()
+        .and()
+      .sessionManagement()
+        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+        .and()
+      .authorizeRequests()
+        .antMatchers("/auth").hasAnyRole("CLIENTE", "CORRETOR")
+        .antMatchers(HttpMethod.GET, "/clientes").hasRole("CLIENTE")
+        .antMatchers(HttpMethod.POST, "/clientes").permitAll()
+        .antMatchers(HttpMethod.GET, "/corretores").hasRole("CORRETOR")
+        .antMatchers(HttpMethod.POST, "/corretores").permitAll()
+        .antMatchers("/imoveis/busca/**").permitAll()
+        .anyRequest().authenticated()
+        .and()
+      .csrf()
+        .disable();
+    // @formatter:on
   }
 
   @Bean

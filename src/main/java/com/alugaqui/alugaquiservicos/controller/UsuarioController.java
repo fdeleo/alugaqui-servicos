@@ -35,12 +35,12 @@ public class UsuarioController {
     return new ResponseEntity<>(cliente, HttpStatus.CREATED);
   }
 
-  @RequestMapping(value = "/test/corretores", method = RequestMethod.GET)
+  @RequestMapping(value = "/corretores", method = RequestMethod.GET)
   public ResponseEntity<Collection<Corretor>> listCorretores() {
     return new ResponseEntity<>(userService.listCorretores(), HttpStatus.OK);
   }
 
-  @RequestMapping(value = "/test/clientes", method = RequestMethod.GET)
+  @RequestMapping(value = "/clientes", method = RequestMethod.GET)
   public ResponseEntity<Collection<Cliente>> listClientes() {
     return new ResponseEntity<>(userService.listClientes(), HttpStatus.OK);
   }
